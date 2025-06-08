@@ -1,0 +1,23 @@
+name: CI - Test Microservice
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # or adopt, zulu, etc.
+          java-version: '17'      # change to your required version
+
+      - name: Build and run tests
+        run: |
+          mvn clean test
