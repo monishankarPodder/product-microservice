@@ -19,5 +19,6 @@ jobs:
           java-version: '17'      # change to your required version
 
       - name: Build and run tests
+        working-directory: ./product
         run: |
           mvn clean test
