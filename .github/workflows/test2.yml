@@ -22,3 +22,19 @@ jobs:
         working-directory: ./product
         run: |
           mvn clean test
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build the microservice
+        working-directory: ./product
+        run: |
+          mvn clean install
